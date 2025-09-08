@@ -119,18 +119,12 @@ author:
 
 # Footer Links
 footer_links:
-  # - title: Twitter
-  #   url: https://twitter.com/mmistakes
-  #   icon: fab fa-twitter-square
-  # - title: Instagram
-  #   url: https://instagram.com/mmistakes
-  #   icon: fab fa-instagram
   - title: GitHub
     url: https://github.com/RishahbDotasara
     icon: fab fa-github-square
   - title: LinkedIn 
     url: https://linkedin.com/in/rishabh-dotasara-7928a0291/
     icon: fab fa-linkedin
-  # - title: Feed
-  #   url: atom.xml
-  #   icon: fas fa-rss-square
+  - title: Feed
+    url: atom.xml
+    icon: fas fa-rss-square

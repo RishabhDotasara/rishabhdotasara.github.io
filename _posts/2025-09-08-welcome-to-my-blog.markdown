@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "Hello World - Starting My Coding Journey Blog"
-date:   2025-01-08 10:34:57 +0530
+title: "Hello World - Starting My Coding Journey Blog"
+date: 2025-01-08 10:34:57 +0530
 categories: personal coding journey
 author: rishabh
 ---
@@ -15,6 +15,7 @@ So here I am, finally doing what every programmer says they'll do but never actu
 You know that feeling when you spend 3 hours trying to fix something, and it turns out you just forgot to add one tiny symbol? Or when you finally get something working, but a week later you have no idea how you did it? Yeah, that's exactly why I'm starting this.
 
 I'm tired of being that guy who:
+
 - Searches Google for the same problem over and over again
 - Forgets how I solved something I figured out last month
 - Learns something cool but never writes it down anywhere
@@ -42,6 +43,6 @@ Stick around if you want to follow along with the adventures of someone who genu
 
 ---
 
-*P.S. - If you're reading this and notice any bugs on this site, please remember that this blog is also a work in progress. I'm probably already aware of them... probably.*
+_P.S. - If you're reading this and notice any bugs on this site, please remember that this blog is also a work in progress. I'm probably already aware of them... probably._
 
 Let's see where this journey takes us! 🚀
