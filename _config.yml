@@ -117,6 +117,13 @@ author:
       url: https://github.com/RishabhDotasara
       icon: fab fa-github-square
 
+# Navigation
+header_pages:
+  - about.md
+  - posts.markdown
+  - categories.markdown
+  - tags.markdown
+
 # Footer Links
 footer_links:
   - title: GitHub

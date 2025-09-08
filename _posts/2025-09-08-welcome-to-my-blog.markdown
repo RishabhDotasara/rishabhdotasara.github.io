@@ -3,7 +3,8 @@ layout: post
 title: "Hello World - Starting My Coding Journey Blog"
 date: 2025-01-08 10:34:57 +0530
 categories: personal coding journey
-author: rishabh
+tags: [blogging, first-post, introduction, web-development]
+author: Rishabh Dotasara
 ---
 
 Hey there! 👋
