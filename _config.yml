@@ -14,7 +14,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 theme: jekyll-theme-so-simple
-# remote_theme: mmistakes/so-simple-theme
+remote_theme: mmistakes/so-simple-theme
 # skin: "/assets/css/skins/default.css"
 # skin: "/assets/css/skins/light.css"
 skin: "/assets/css/skins/dark.css"
@@ -129,7 +129,7 @@ footer_links:
     url: https://github.com/RishahbDotasara
     icon: fab fa-github-square
   - title: LinkedIn 
-    url: linkedin.com/in/rishabh-dotasara-7928a0291/
+    url: https://linkedin.com/in/rishabh-dotasara-7928a0291/
     icon: fab fa-linkedin
   # - title: Feed
   #   url: atom.xml
