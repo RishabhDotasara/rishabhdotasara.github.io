@@ -7,7 +7,7 @@ tags: [non-tech, first-post]
 author: rishabh
 share: false
 image: 
-    path: "/assets/images/cover_images/cover_first_post.png"
+    path: "/assets/cover_first_post.png"
 ---
 
 ## Why I Started This Blog
