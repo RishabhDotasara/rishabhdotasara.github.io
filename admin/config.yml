@@ -26,3 +26,16 @@ collections:
       - { label: 'Author', name: 'author', widget: 'string', required: true, default: 'rishabh' }
       - { label: 'Share', name: 'share', widget: 'boolean', default: true, required: true }
       - { label: 'Body', name: 'body', widget: 'markdown' }
+
+  - name: 'drafts'
+    label: 'Drafts'
+    folder: '_drafts/'
+    create: true
+    slug: '{{slug}}'
+    extension: 'markdown'
+    format: 'frontmatter'
+    editor:
+      preview: false
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
