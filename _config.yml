@@ -108,14 +108,14 @@ defaults:
       share: true
 
 # Site Author
-author:
-  name: Rishabh Dotasara
-  picture: /images/profile.png
-  email:
-  links:
-    - title: GitHub
-      url: https://github.com/RishabhDotasara
-      icon: fab fa-github-square
+author: false
+  # name: Rishabh Dotasara
+  # picture: /images/profile.png
+  # email:
+  # links:
+  #   - title: GitHub
+  #     url: https://github.com/RishabhDotasara
+  #     icon: fab fa-github-square
 
 # Navigation
 header_pages:
@@ -135,3 +135,4 @@ footer_links:
   - title: Feed
     url: atom.xml
     icon: fas fa-rss-square
+

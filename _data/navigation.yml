@@ -1,8 +1,8 @@
 
 - title: Home 
   url: /
-- title: about 
-  url: /about/
+# - title: about 
+#   url: /about/
 - title: Posts 
   url: /posts/
 # - title: Categories
