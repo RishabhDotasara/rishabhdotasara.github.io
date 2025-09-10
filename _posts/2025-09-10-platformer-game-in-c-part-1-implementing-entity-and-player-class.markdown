@@ -4,9 +4,9 @@ title: "Platformer Game in C++ Part 1: Implementing Entity and Player Class"
 date: 2025-09-10T15:48:00.000+05:30
 categories: "tech "
 tags:
-  - "[platformer"
+  - platformer
   - gamedev
-  - c++]
+  - c++
 author: rishabh
 share: true
 ---
