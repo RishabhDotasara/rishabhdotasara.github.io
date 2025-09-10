@@ -3,7 +3,7 @@
 # post specific author data if different from what is set in _config.yml
 rishabh:
   name: Rishabh Dotasara
-  picture: /images/profile.png
+  picture: /assets/images/profile.png
   
   links: 
     - title: Linked In 
