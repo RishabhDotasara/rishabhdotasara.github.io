@@ -13,6 +13,8 @@ collections:
     folder: '_posts/'
     create: true
     slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    extension: 'markdown'
+    format: 'frontmatter'
     editor:
       preview: false
     fields:
