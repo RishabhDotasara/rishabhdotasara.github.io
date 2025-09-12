@@ -6,8 +6,8 @@ tags: c++ platformer gamedev
 author: rishabh 
 share: true 
 image: "/assets/platformer_part_1.png"
-
----
+comments: true
+--- 
 
 ## Introduction
 In this series, I will document the creation of my first game: a 2D platformer written in C++ using [SFML](https://www.sfml-dev.org/).
