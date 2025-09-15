@@ -1,11 +1,11 @@
 ---
 layout: post 
-title: "Platformer Game in C++ Part 3: Implementing Collision Detection"
+title: "Platformer Game in C++ Part 3: Implementing Collision Detection and Adding Graphics To The Game"
 categories: tech 
 tags: c++ platformer gamedev 
 author: rishabh 
 share: true 
-image: "/assets/platformer_part_1.png"
+image: "/assets/platformer_part_3.png"
 comments: true
 
 ---
@@ -107,7 +107,7 @@ bool CollisionActive{true};
 ```
 
 - **Default State**: The flag is set to `true` by default, enabling collision detection for most entities.
-- **Customizability**: Developers can toggle this flag to disable collision detection for specific entities.
+- **Customizability**: We can toggle this flag to disable collision detection for specific entities.
 
 #### Setter and Getter Functions
 
@@ -135,10 +135,152 @@ void resolveCollision(Entity& other);
 - **`isColliding`**: This function checks whether the current entity is colliding with another entity.
 - **`resolveCollision`**: This function resolves the collision by adjusting the positions or velocities of the entities involved.
 
-#### Integration with the Game
+in this game all objects will be simple rectangular shapes, so we will be using bounding boxes based collision resolution method.
+You can read more about it here https://garagefarm.net/blog/collision-detection-in-2d-and-3d-concepts-and-techniques.
 
-With these additions, the `Entity` class now serves as a robust base for all game objects. Derived classes can override or extend these functions to implement specific collision behaviors. For example, the `Player` class can use these functions to interact with the environment and other entities.
+after implementing both the functions our `Entity` Class code looks like this:
 
-### Next Steps
+```cpp 
 
-In the next section, we will implement the `isColliding` and `resolveCollision` functions. These will use the `position` and `size` variables to detect and resolve collisions based on bounding box overlap.
+
+#include "entity.hpp"
+
+
+
+Entity::Entity(){
+    // Set default position and size
+    position = sf::Vector2f(100.0f, 100.0f);
+    size = sf::Vector2f(50.0f, 50.0f);
+    
+    // Configure the rectangle shape
+    entity.setPosition(position);
+    entity.setSize(size);
+    entity.setFillColor(color);
+}
+
+// implement the setters and getter 
+
+void Entity::setPosition(sf::Vector2f pos) {
+    position = pos;
+    // entity.setPosition(position);
+}
+
+sf::Vector2f Entity::getPosition() {
+    return position;
+}
+
+void Entity::setSize(sf::Vector2f s) {
+    size = s;
+    entity.setSize(size);
+}
+
+sf::Vector2f Entity::getSize() {
+    return size;
+}
+
+
+bool Entity::isColliding(Entity& other){
+
+    if (!CollisionActive) return false;
+
+    sf::FloatRect thisBounds = entity.getGlobalBounds();
+    sf::FloatRect otherBounds = other.entity.getGlobalBounds();
+    return thisBounds.intersects(otherBounds);
+}
+
+void Entity::resolveCollision(Entity& other){
+
+    if (!CollisionActive) return;
+
+
+    sf::FloatRect thisBounds = entity.getGlobalBounds();
+    sf::FloatRect otherBounds = other.entity.getGlobalBounds();
+
+    if (thisBounds.intersects(otherBounds)) {
+        float dx = (thisBounds.left + thisBounds.width / 2) - (otherBounds.left + otherBounds.width / 2);
+        float dy = (thisBounds.top + thisBounds.height / 2) - (otherBounds.top + otherBounds.height / 2);
+
+        float overlapX = (thisBounds.width / 2 + otherBounds.width / 2) - std::abs(dx);
+        float overlapY = (thisBounds.height / 2 + otherBounds.height / 2) - std::abs(dy);
+
+        if (overlapX < overlapY) {
+            if (dx > 0)
+                position.x += overlapX;
+            else
+                position.x -= overlapX;
+            velocity.x = 0;
+        } else {
+            if (dy > 0)
+                position.y += overlapY;
+            else
+                position.y -= overlapY;
+            velocity.y = 0;
+        }
+        entity.setPosition(position);
+    }
+}
+
+
+
+void Entity::update(float deltaTime){
+    // here update all the params that you want to update 
+    // ex: physics params, the position of the entity 
+
+    // keep updating the position 
+    position.x += velocity.x;
+    position.y += velocity.y;
+    
+    // apply gravity 
+    if (physical){
+        // apply the acceleration 
+        velocity.y += GRAVITY * deltaTime;
+
+    }
+
+    // set the position for the entity
+    entity.setPosition(position);
+}
+
+```
+
+
+
+
+#### **Testing the Collision System**
+
+To verify that the collision detection system works as expected, we can create a platform entity and a player entity. By placing them in the game world, we can observe how the player interacts with the platform. Below is an example setup:
+
+```cpp
+Entity platform;
+platform.setPosition(sf::Vector2f(200.0f, 400.0f));
+platform.setSize(sf::Vector2f(300.0f, 50.0f));
+platform.physical = false; // The platform does not move
+platform.CollisionActive = true; // Enable collision detection for the platform
+
+Entity player;
+player.setPosition(sf::Vector2f(250.0f, 300.0f));
+player.setSize(sf::Vector2f(50.0f, 50.0f));
+player.physical = true; // The player is affected by gravity
+player.CollisionActive = true; // Enable collision detection for the player
+
+// In the game loop
+if (player.isColliding(platform)) {
+    player.resolveCollision(platform);
+}
+```
+
+- **Platform Setup**: The platform is stationary and has collision detection enabled.
+- **Player Setup**: The player is affected by gravity and can collide with the platform.
+- **Collision Handling**: When the player collides with the platform, the `resolveCollision` function ensures that the player stops moving and does not pass through the platform.
+
+This setup ensures that the player will stop moving when it collides with the platform, and gravity will no longer pull the player through the platform.
+
+#### **Next Steps**
+
+In the upcoming posts, we will focus on adding graphics to our game to enhance its visual appeal. Specifically, we will:
+
+- Implement a `SpriteManager` class to manage all the graphics in the game.
+- Use sprites to replace the basic shapes currently used for entities.
+- Add animations and textures to make the game more engaging.
+
+Stay tuned as we continue to build and refine our platformer game!
