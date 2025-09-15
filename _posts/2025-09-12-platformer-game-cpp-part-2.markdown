@@ -12,6 +12,25 @@ comments: true
 So, in the last post we implemented the Base `Entity` Class and a simple `Player` Class.
 In this blog we are going to implement the `Input Handler` Class and integrate movement in the `Player` Class using the `Input Handler`.
 
+The folder structure looks like:
+```
+platformer/
+├── src/
+│   ├── main.cpp
+│   ├── entities/
+│   │   ├── entity.hpp
+│   │   ├── entity.cpp
+│   │   └── player.hpp
+│   │   └── player.cpp
+│   ├── input/
+│       ├── input.hpp
+│       └── input.cpp
+|
+├── build/
+└── .vscode/
+    ├── tasks.json
+``` 
+
 Below is the header file for the `InputHandler` class, which is a crucial component for managing player input in our platformer game. This class is designed to handle keyboard inputs in a decoupled way and be a whole different system where different entities from the game can bind the keys to specific functions.
 
 ```cpp

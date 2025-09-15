@@ -1,6 +1,6 @@
 ---
 layout: post 
-title: "Platformer Game in C++ Part 3: Implementing Collision Detection and Adding Graphics To The Game"
+title: "Platformer Game in C++ Part 3: Implementing Collision Detection Resolution"
 categories: tech 
 tags: c++ platformer gamedev 
 author: rishabh 
