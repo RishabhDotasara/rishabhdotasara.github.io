@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>tee Premium - Success!</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap"
+    rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <style>
+    :root {
+      --bg-color: #09090b;
+      /* Zinc 950 */
+      --surface-color: #121214;
+      --accent-color: #C8FF00;
+      --text-primary: #ffffff;
+      --text-secondary: #a1a1aa;
+      /* Zinc 400 */
+      --border-color: #27272a;
+      /* Zinc 800 */
+      --radius-md: 16px;
+      --radius-lg: 24px;
+
+      --font-main: 'DM Sans', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-primary);
+      font-family: var(--font-main);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 1.5rem;
+      overflow-x: hidden;
+      background-image:
+        radial-gradient(circle at 50% 0%, rgba(200, 255, 0, 0.04) 0%, transparent 60%),
+        radial-gradient(circle at 50% 100%, rgba(255, 255, 255, 0.02) 0%, transparent 50%);
+    }
+
+    .container {
+      max-width: 520px;
+      width: 100%;
+      animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .header-logo {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 2rem;
+      display: block;
+      border-radius: var(--radius-md);
+      box-shadow: 0 0 40px rgba(200, 255, 0, 0.15);
+      object-fit: cover;
+      background-color: #000;
+    }
+
+    .header h1 {
+      font-size: 2.75rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      color: var(--text-primary);
+    }
+
+    .header p {
+      color: var(--text-secondary);
+      font-size: 1.125rem;
+      font-weight: 400;
+      max-width: 440px;
+      margin: 0 auto;
+      letter-spacing: -0.01em;
+    }
+
+    .card {
+      background-color: var(--surface-color);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 3rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(200, 255, 0, 0.3), transparent);
+    }
+
+    .card-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 2.5rem;
+      text-align: center;
+    }
+
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      position: relative;
+    }
+
+    .steps::before {
+      content: '';
+      position: absolute;
+      top: 10px;
+      bottom: 10px;
+      left: 15px;
+      width: 1px;
+      background-color: var(--border-color);
+      z-index: 0;
+    }
+
+    .step {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      position: relative;
+      z-index: 1;
+      opacity: 0;
+      animation: fadeIn 0.8s ease forwards;
+    }
+
+    .step:nth-child(1) {
+      animation-delay: 0.3s;
+    }
+
+    .step:nth-child(2) {
+      animation-delay: 0.5s;
+    }
+
+    .step:nth-child(3) {
+      animation-delay: 0.7s;
+    }
+
+    .step:nth-child(4) {
+      animation-delay: 0.9s;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .step-number {
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      background-color: var(--bg-color);
+      border: 1px solid var(--border-color);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 500;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      transition: all 0.3s ease;
+      box-shadow: 0 0 0 6px var(--surface-color);
+    }
+
+    .step:hover .step-number {
+      border-color: var(--accent-color);
+      color: var(--accent-color);
+      background-color: rgba(200, 255, 0, 0.05);
+      box-shadow: 0 0 0 6px var(--surface-color), 0 0 15px rgba(200, 255, 0, 0.15);
+    }
+
+    .step-content {
+      flex: 1;
+    }
+
+    .step-content p {
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: #e4e4e7;
+      /* Zinc 200 */
+      margin-bottom: 0;
+      line-height: 1.5;
+      letter-spacing: -0.01em;
+    }
+
+    .step-content strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    @media (max-width: 600px) {
+      .header h1 {
+        font-size: 2.25rem;
+      }
+
+      .header p {
+        font-size: 1.05rem;
+      }
+
+      .card {
+        padding: 2.5rem 1.5rem;
+      }
+
+      .step-content p {
+        font-size: 1rem;
+      }
+
+      .steps::before {
+        left: 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="header">
+      <img src="/assets/icon.png" alt="tee logo" class="header-logo">
+      <h1>Welcome to tee Premium</h1>
+      <p>Your purchase is complete. Thank you for supporting our work.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Activation Guide</div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <p>Retrieve your license key from the receipt email and store it securely.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <p>Open the extension and navigate to the <strong>Help</strong> tab.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <p>Paste your license key into the input field and click <strong>Activate</strong>.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <p>Enjoy instant access to all premium features.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener('load', () => {
+      var duration = 3 * 1000;
+      var animationEnd = Date.now() + duration;
+      var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+      function randomInRange(min, max) {
+        return Math.random() * (max - min) + min;
+      }
+
+      var interval = setInterval(function () {
+        var timeLeft = animationEnd - Date.now();
+        if (timeLeft <= 0) return clearInterval(interval);
+
+        var particleCount = 50 * (timeLeft / duration);
+        confetti(Object.assign({}, defaults, {
+          particleCount,
+          origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
+          colors: ['#C8FF00', '#ffffff', '#888888']
+        }));
+        confetti(Object.assign({}, defaults, {
+          particleCount,
+          origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
+          colors: ['#C8FF00', '#ffffff', '#888888']
+        }));
+      }, 250);
+    });
+  </script>
+</body>
+
+</html>
